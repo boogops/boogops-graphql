@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "boogops-graphql",
+  "workspaces": [
+    "src/graphql",
+    "src/models"
+  ],
+  "scripts": {
+    "graphql-start": "yarn workspace graphql start",
+    "models-build": "yarn workspace models build"
+  }
+}
