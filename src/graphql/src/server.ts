@@ -1,35 +1,48 @@
 import { ApolloServer } from "apollo-server-express";
-import { DataSources } from "apollo-server-core/dist/graphqlOptions";
-import express from "express";
-import { getConfig } from "./config";
 import resolvers from "./resolvers";
-import schema from "./schema";
+import typeDefs from "./type-defs";
+import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
+import express from "express";
+import http from "http";
 import { ThingsStore } from "./services";
+import { getConfig } from "./config";
 
 const { PORT, API_URI } = getConfig();
-const app = express();
-const thingsStore = new ThingsStore({
-  url: API_URI,
-});
-const server = new ApolloServer({
-  resolvers,
-  dataSources: (): DataSources<{
-    thingsStore: ThingsStore;
-  }> => {
-    return {
-      thingsStore,
-    };
-  },
-  typeDefs: schema,
-/*  playground: {
-    settings: {
-      "editor.theme": "dark",
+
+async function listen(port: number) {
+  const app = express();
+  const httpServer = http.createServer(app);
+
+  const thingsStore = new ThingsStore({
+    url: API_URI,
+  });
+
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    dataSources: (): any => {
+      return {
+        thingsStore,
+      };
     },
-  },*/
-});
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+  });
+  await server.start();
 
-server.applyMiddleware({ app });
+  server.applyMiddleware({ app });
 
-app.listen(PORT, () =>
-  console.log(`GraphQL Server is now running on port ${PORT}.`),
-);
+  return new Promise((resolve, reject) => {
+    httpServer.listen(port).once("listening", resolve).once("error", reject);
+  });
+}
+
+async function main() {
+  try {
+    await listen(PORT);
+    console.log(`🚀 Server is ready at http://localhost:${PORT}/graphql`);
+  } catch (err) {
+    console.error("💀 Error starting the node server", err);
+  }
+}
+
+void main();

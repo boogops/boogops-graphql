@@ -1,6 +1,6 @@
 import { gql } from "apollo-server-express";
 
-const schema = gql`
+const typeDefs = gql`
   type Thing {
     id: String
   }
@@ -14,4 +14,4 @@ const schema = gql`
   }
 `;
 
-export default schema;
+export default typeDefs;

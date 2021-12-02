@@ -1,9 +1,8 @@
-import { IResolvers } from "apollo-server-express";
 import { Thing } from "models";
 
-const resolvers: IResolvers = {
+const resolvers = {
   Query: {
-    async thing(_, { id }, { dataSources }): Promise<Thing> {
+    async thing(_: unknown, { id }: any, { dataSources }: any): Promise<Thing> {
       const retval = await dataSources.unitStore.getById(id);
       return retval;
     },
