@@ -21,7 +21,7 @@ const server = new ApolloServer({
     };
   },
   typeDefs: schema,
-  /*  playground: {
+/*  playground: {
     settings: {
       "editor.theme": "dark",
     },
