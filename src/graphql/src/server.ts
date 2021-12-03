@@ -20,7 +20,7 @@ async function listen(port: number) {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    dataSources: (): any => {
+    dataSources: () => {
       return {
         thingsStore,
       };
