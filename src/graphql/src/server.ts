@@ -1,9 +1,11 @@
+import http from "http";
+
 import { ApolloServer } from "apollo-server-express";
-import resolvers from "./resolvers";
-import typeDefs from "./type-defs";
 import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 import express from "express";
-import http from "http";
+
+import resolvers from "./resolvers";
+import typeDefs from "./type-defs";
 import { ThingsStore } from "./services";
 import { getConfig } from "./config";
 
@@ -45,4 +47,4 @@ async function main() {
   }
 }
 
-void main();
+main();

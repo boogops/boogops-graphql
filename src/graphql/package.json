@@ -15,15 +15,16 @@
     "models": "1.0.0"
   },
   "devDependencies": {
+    "@shopify/eslint-plugin": "^41.0.1",
     "@types/express": "^4.17.13",
     "@types/node": "^16.11.11",
+    "eslint": "^8.3.0",
     "nodemon": "^2.0.15",
+    "prettier": "^2.5.0",
     "ts-node": "^10.4.0",
-    "tsc-watch": "^4.5.0",
     "typescript": "^4.5.2"
   },
   "scripts": {
-    "watch": "nodemon --watch './**/*.{ts,graphql}' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm' src/server.ts",
-    "dev": "tsc-watch --onSuccess \"yarn watch\""
+    "watch": "nodemon --watch './**/*.{ts,graphql}' --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm' src/server.ts"
   }
 }

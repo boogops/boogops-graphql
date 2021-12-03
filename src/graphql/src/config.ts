@@ -8,11 +8,11 @@ export interface Config {
 export function getConfig(): Config {
   dotenv.config();
 
-  const PORT = parseInt(process.env.PORT ?? "4000");
-  const API_URI = process.env.API_URI ?? "http://localhost:5000";
+  const port = parseInt(process.env.PORT ?? "4000", 10);
+  const apiUri = process.env.API_URI ?? "http://localhost:5000";
 
   return {
-    PORT,
-    API_URI,
+    PORT: port,
+    API_URI: apiUri,
   };
 }
