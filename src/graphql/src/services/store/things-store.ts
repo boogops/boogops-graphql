@@ -1,6 +1,7 @@
 import { RESTDataSource } from "apollo-datasource-rest";
-import StoreOptions from "./store-options";
 import { Thing } from "models";
+
+import StoreOptions from "./store-options";
 
 class ThingsStore extends RESTDataSource {
   constructor(storeOptions: StoreOptions) {
@@ -9,7 +10,7 @@ class ThingsStore extends RESTDataSource {
   }
 
   public async getById(id: string): Promise<Thing> {
-    return await this.get(`api/things/${id}`);
+    return this.get(`api/things/${id}`);
   }
 }
 
