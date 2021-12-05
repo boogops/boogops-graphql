@@ -2,9 +2,7 @@
   "name": "graphql-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "type": "module",
-  "exports": "./dist/index.js",
+  "main": "./dist/src/server.js",
   "dependencies": {
     "apollo-datasource-rest": "^3.4.0",
     "apollo-server-core": "^3.5.0",
