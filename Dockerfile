@@ -15,7 +15,7 @@ RUN yarn workspace graphql-api build
 
 FROM base as final
 WORKDIR /app
-COPY --from=build /app/src/graphql/dist .
+COPY --from=build /app .
 RUN chown -R node /app
 USER node
-CMD ["node", "server.js"]
+CMD ["node", "src/graphql/dist/server.js"]
