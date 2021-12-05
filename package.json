@@ -4,9 +4,5 @@
   "workspaces": [
     "src/graphql",
     "src/models"
-  ],
-  "scripts": {
-    "graphql-start": "yarn workspace graphql-api start",
-    "models-build": "yarn workspace models build"
-  }
+  ]
 }
