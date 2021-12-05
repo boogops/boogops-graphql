@@ -1,0 +1,25 @@
+name: Yarn Build CI
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Yarn Install
+    - uses: borales/actions-yarn@v2.3.0
+      with:
+        cmd: install
+    
+    - name: Build Models
+    - uses: borales/actions-yarn@v2.3.0
+      with:
+        cmd: workspace models build
+    
+    - name: Build GraphQL API
+    - uses: borales/actions-yarn@v2.3.0
+      with:
+        cmd: workspace graphql-api build
