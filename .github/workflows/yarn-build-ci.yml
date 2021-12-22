@@ -1,6 +1,6 @@
 name: Yarn Build CI
 
-on: [ push ]
+on: push
 
 jobs:
   build:
