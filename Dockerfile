@@ -18,4 +18,4 @@ WORKDIR /app
 COPY --from=build /app .
 RUN chown -R node /app
 USER node
-CMD ["node", "src/graphql/dist/server.js"]
+CMD ["node", "src/graphql/build/server.js"]

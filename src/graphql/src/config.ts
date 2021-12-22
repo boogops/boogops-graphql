@@ -1,3 +1,4 @@
+/* eslint-disable no-process-env */
 import * as dotenv from "dotenv";
 
 export interface Config {
