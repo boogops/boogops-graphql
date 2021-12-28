@@ -1,16 +1,27 @@
 import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
-  type Thing {
+  type ThingDef {
     id: String
+    propDefs: [PropDef]
   }
 
-  type Query {
-    thing(id: ID!): Thing
+  type PropDef {
+    name: String!
+    propType: String!
+  }
+
+  input PropDefInput {
+    name: String!
+    propType: String!
+  }
+
+  type Mutation {
+    createThingDef(propDefInputs: [PropDefInput]): ThingDef
   }
 
   schema {
-    query: Query
+    mutation: Mutation
   }
 `;
 

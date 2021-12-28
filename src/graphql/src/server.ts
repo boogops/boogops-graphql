@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import http from "http";
 
 import { ApolloServer } from "apollo-server-express";
@@ -6,7 +7,7 @@ import express from "express";
 
 import resolvers from "./resolvers";
 import typeDefs from "./type-defs";
-import { ThingsStore } from "./services";
+import { ThingDefsStore } from "./services";
 import { getConfig } from "./config";
 
 const { PORT, API_URI } = getConfig();
@@ -15,7 +16,7 @@ async function listen(port: number) {
   const app = express();
   const httpServer = http.createServer(app);
 
-  const thingsStore = new ThingsStore({
+  const thingDefsStore = new ThingDefsStore({
     url: API_URI,
   });
 
@@ -24,7 +25,7 @@ async function listen(port: number) {
     resolvers,
     dataSources: () => {
       return {
-        thingsStore,
+        thingDefsStore,
       };
     },
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
