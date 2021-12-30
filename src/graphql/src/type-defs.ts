@@ -16,11 +16,16 @@ const typeDefs = gql`
     propType: String!
   }
 
+  type Query {
+    hello: String!
+  }
+
   type Mutation {
     createThingDef(propDefInputs: [PropDefInput]): ThingDef
   }
 
   schema {
+    query: Query
     mutation: Mutation
   }
 `;
