@@ -1,1 +1,1 @@
-export { ThingsStore } from "./store";
+export { ThingDefsStore } from "./store";

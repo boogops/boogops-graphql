@@ -1,10 +1,11 @@
-import { Thing } from "models";
-
 const resolvers = {
-  Query: {
-    async thing(_: unknown, { id }: any, { dataSources }: any): Promise<Thing> {
-      const retval = await dataSources.thingsStore.getById(id);
-      return retval;
+  Mutation: {
+    async createThingDef(
+      _: unknown,
+      { propDefInputs }: any,
+      { dataSources }: any
+    ): Promise<string> {
+      return dataSources.thingDefsStore.create(propDefInputs);
     },
   },
 };
